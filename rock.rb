@@ -11,7 +11,6 @@ before do
 
   session[:you] = 0 unless session[:you]
   session[:computer] = 0 unless session[:computer]
-  @message = ""
 end
 
 get '/' do  
@@ -29,18 +28,18 @@ get '/:type' do
   computer_throw = @throws.sample
 
   if throw == computer_throw
-    @message = "You tied the computer. Try again."
+    @message = {info: "You tied the computer. Try again."}
 
   elsif computer_throw == @defeat[throw]
-    @message = "Nicely done, you crushed the computer player!"
+    @message = {success: "Nicely done, you crushed the computer player!"}
     session[:you] = session[:you].to_i + 1
   
   elsif throw == @defeat[computer_throw]
-    @message = "The computer straight beat you down. Sucks."
+    @message = {error: "The computer straight beat you down. Sucks."}
     session[:computer] = session[:computer].to_i + 1
 
   else
-    @message = "You know the game. Throw something that matters."
+    @message = {error: "You know the game. Throw something that matters."}
   end
 
   erb :index

@@ -11,9 +11,11 @@
   <body>
     <div class="row-fluid">
       <div class="span12 center">
-        <%= @message %>
-        <br />
-        <br />
+        <% unless @message.nil? %>
+          <div class="alert alert-<%= @message.keys.first %>">
+            <%= @message.values.first %>   
+          </div>
+        <% end %>
         You: <%= session[:you] %>
         <br />
         Computer: <%= session[:computer] %>
@@ -26,6 +28,13 @@
         <br />
         <br />
         <a class="btn btn-primary btn-large" href="/scissors">Scissors</a>
+        <br />
+        <br />
+        <br />
+        <a href="/reset">Start Over</a>
+        <br />
+        <br />
+        <a href="http://twitter.com/brandonhilkert" target="_blank" class="small">@brandonhilkert</a>
       </div>
     </div>
   </body>
