@@ -5,3 +5,21 @@
 .small {
   font-size: 0.4em;
 }
+
+.description {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 0.6em;
+}
+
+.score {
+  width: 150px;
+  margin: 0 auto;
+  font-size: 0.6em;
+  margin-bottom: 10px;
+}
+
+.progress {
+  width: 200px;
+  margin: 0 auto;
+}

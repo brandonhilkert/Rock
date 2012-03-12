@@ -9,11 +9,30 @@ before do
   @defeat = {rock: :scissors, paper: :rock, scissors: :paper}
   @throws = @defeat.keys
 
-  session[:you] = 0 unless session[:you]
-  session[:computer] = 0 unless session[:computer]
+  reset_score if session[:you].nil? || session[:computer].nil?
+end
+
+def reset_score
+  session[:you] = 0
+  session[:computer] = 0
+end
+
+def check_for_end
+  if session[:you].to_i == 10 || session[:computer].to_i == 10
+    redirect "/"
+  end
 end
 
 get '/' do  
+  if session[:you].to_i == 10
+    reset_score
+    @message = {success: "You're the man. Go again!"}
+
+  elsif session[:computer].to_i == 10
+    reset_score
+    @message = {error: "Boo hoo...Get 'em next time."}
+  end
+
   erb :index
 end
 
@@ -31,12 +50,14 @@ get '/:type' do
     @message = {info: "You tied the computer. Try again."}
 
   elsif computer_throw == @defeat[throw]
-    @message = {success: "Nicely done, you crushed the computer player!"}
     session[:you] = session[:you].to_i + 1
+    check_for_end
+    @message = {success: "Nicely done, you crushed the computer player!"}
   
   elsif throw == @defeat[computer_throw]
-    @message = {error: "The computer straight beat you down. Sucks."}
     session[:computer] = session[:computer].to_i + 1
+    check_for_end
+    @message = {error: "The computer straight beat you down. Sucks."}
 
   else
     @message = {error: "You know the game. Throw something that matters."}
