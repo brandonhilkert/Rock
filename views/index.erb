@@ -1,2 +1,32 @@
-Hello World!
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock - Paper - Scissors</title>
+    <link href="/stylesheets/style.css" rel='stylesheet' type="text/css" />
+    <link href="/stylesheets/bootstrap.css" rel='stylesheet' type="text/css" />
+    <script src="/javascripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="row-fluid">
+      <div class="span12 center">
+        <%= @message %>
+        <br />
+        <br />
+        You: <%= session[:you] %>
+        <br />
+        Computer: <%= session[:computer] %>
+        <br />
+        <br />
+        <a class="btn btn-primary btn-large" href="/rock">Rock</a>
+        <br />
+        <br />
+        <a class="btn btn-primary btn-large" href="/paper">Paper</a>
+        <br />
+        <br />
+        <a class="btn btn-primary btn-large" href="/scissors">Scissors</a>
+      </div>
+    </div>
+  </body>
+</html>
