@@ -42,19 +42,19 @@ get '/reset' do
 end
 
 get '/:type' do
-  throw = params[:type].to_sym
+  @throw = params[:type].to_sym
 
-  computer_throw = @throws.sample
+  @computer_throw = @throws.sample
 
-  if throw == computer_throw
+  if @throw == @computer_throw
     @message = {info: "You tied the computer. Try again."}
 
-  elsif computer_throw == @defeat[throw]
+  elsif @computer_throw == @defeat[@throw]
     session[:you] = session[:you].to_i + 1
     check_for_end
     @message = {success: "Nicely done, you crushed the computer player!"}
   
-  elsif throw == @defeat[computer_throw]
+  elsif @throw == @defeat[@computer_throw]
     session[:computer] = session[:computer].to_i + 1
     check_for_end
     @message = {error: "The computer straight beat you down. Sucks."}

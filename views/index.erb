@@ -18,19 +18,36 @@
           The game is Rock, Paper, Scissors. You know how it works. Play the computer. First one to 10 wins!
         </div>
         <br />
-        <div class="progress progress-striped active">
-          <div class="bar" style="width: <%= session[:you] * 10 %>%;"></div>
-        </div>
-        <div class="score">
-          You: <%= session[:you] %>
-        </div> 
-        <div class="progress progress-danger progress-striped active">
-          <div class="bar" style="width: <%= session[:computer] * 10 %>%;"></div>
-        </div>
-        <div class="score">
-          Computer: <%= session[:computer] %>
+        
+        <div class="game">
+          <div class="player">
+            <div class="progress progress-striped active">
+              <div class="bar" style="width: <%= session[:you] * 10 %>%;"></div>
+            </div>
+            <div class="score">
+              You: <%= session[:you] %>
+            </div> 
+            <% if @throw %>
+              <img src="/images/<%= @throw %>.png" height="100" alt="<%= @throw %>" />
+            <% end %>
+            <br class="clear" />
+          </div>
+          
+          <div class="player">
+            <div class="progress progress-danger progress-striped active">
+              <div class="bar" style="width: <%= session[:computer] * 10 %>%;"></div>
+            </div>
+            <div class="score">
+              Computer: <%= session[:computer] %>
+            </div>
+            <% if @computer_throw %>
+              <img src="/images/<%= @computer_throw %>.png" height="100" alt="<%= @computer_throw %>" />
+            <% end %>
+          </div>
+          <br class="clear" />
         </div>
         <br />
+        
         <a class="btn btn-primary btn-large" href="/rock">Rock</a>
         <a class="btn btn-primary btn-large" href="/paper">Paper</a>
         <a class="btn btn-primary btn-large" href="/scissors">Scissors</a>
@@ -38,7 +55,6 @@
         <br />
         <br />
         <a href="/reset">Start Over</a>
-        <br />
         <br />
         <br />
         <a href="http://twitter.com/brandonhilkert" target="_blank" class="small">@brandonhilkert</a>

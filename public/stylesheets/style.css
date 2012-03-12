@@ -6,6 +6,23 @@
   font-size: 0.4em;
 }
 
+.clear {
+  clear: both;
+}
+
+.game {
+  width: 420px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+
+}
+
+.player {
+  float: left;
+  margin-right: 10px;
+  min-height: 200px;
+}
+
 .description {
   width: 400px;
   margin: 0 auto;
@@ -16,7 +33,7 @@
   width: 150px;
   margin: 0 auto;
   font-size: 0.6em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .progress {
